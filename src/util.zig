@@ -26,31 +26,16 @@ pub fn UIntLineIterator(comptime T: type) type {
 pub const LineIterator = struct {
     const Self = @This();
 
-    str: []const u8,
-    curr: usize = 0,
+    it: std.mem.TokenIterator,
 
     pub fn init(str: []const u8) Self {
         return .{
-            .str = str,
+            .it = std.mem.tokenize(str, "\r\n"),
         };
     }
 
     pub fn next(self: *Self) ?[]const u8 {
-        const new_line = "\r\n";
-
-        if (self.curr >= self.str.len) {
-            return null;
-        }
-
-        var result = self.str[self.curr..];
-        if (std.ascii.indexOfIgnoreCase(result, new_line)) |new_line_pos| {
-            result = result[0..new_line_pos];
-            self.curr += result.len + new_line.len;
-        } else {
-            self.curr += result.len;
-        }
-
-        return result;
+        return self.it.next();
     }
 };
 
