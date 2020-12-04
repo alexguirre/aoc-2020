@@ -1,5 +1,15 @@
 const std = @import("std");
 
+pub fn all(comptime T: type, items: []const T, comptime predicate: fn(item: T)bool) bool {
+    for (items) |item| {
+        if (!predicate(item)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 pub fn UIntLineIterator(comptime T: type) type {
     return struct {
         const Self = @This();

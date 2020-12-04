@@ -6,7 +6,7 @@ const LibExeObjStep = std.build.LibExeObjStep;
 const should_link_libc = false;
 
 const test_files = [_][]const u8 {
-    // list any zig files with tests here
+    "src/day04.zig",
 };
 
 fn linkObject(b: *Builder, obj: *LibExeObjStep) void {
