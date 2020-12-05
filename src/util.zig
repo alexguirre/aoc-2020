@@ -33,6 +33,10 @@ pub fn UIntLineIterator(comptime T: type) type {
     };
 }
 
+pub fn lines(str: []const u8) LineIterator {
+    return LineIterator.init(str);
+}
+
 pub const LineIterator = struct {
     const Self = @This();
 

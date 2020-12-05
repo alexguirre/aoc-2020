@@ -7,6 +7,7 @@ const should_link_libc = false;
 
 const test_files = [_][]const u8 {
     "src/day04.zig",
+    "src/day05.zig",
 };
 
 fn linkObject(b: *Builder, obj: *LibExeObjStep) void {
