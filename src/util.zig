@@ -10,6 +10,12 @@ pub fn all(comptime T: type, items: []const T, comptime predicate: fn(item: T)bo
     return true;
 }
 
+pub fn andEach(a: []bool, b: []const bool) void {
+    for (a) |_, i| {
+        a[i] = a[i] and b[i];
+    }
+}
+
 pub fn UIntLineIterator(comptime T: type) type {
     return struct {
         const Self = @This();
