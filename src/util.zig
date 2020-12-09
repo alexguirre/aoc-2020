@@ -16,6 +16,10 @@ pub fn andEach(a: []bool, b: []const bool) void {
     }
 }
 
+pub fn uintLines(comptime T: type, str: []const u8) UIntLineIterator(T) {
+    return UIntLineIterator(T).init(str);
+}
+
 pub fn UIntLineIterator(comptime T: type) type {
     return struct {
         const Self = @This();
