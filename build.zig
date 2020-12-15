@@ -17,6 +17,7 @@ const test_files = [_][]const u8 {
     "src/day12.zig",
     "src/day13.zig",
     "src/day14.zig",
+    "src/day15.zig",
 };
 
 fn linkObject(b: *Builder, obj: *LibExeObjStep) void {
